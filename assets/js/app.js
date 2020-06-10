@@ -13,3 +13,6 @@ import "../css/app.scss"
 //     import socket from "./socket"
 //
 import "phoenix_html"
+
+import * as timeago from 'timeago.js';
+timeago.render(document.querySelectorAll('.timeago-placeholder'));

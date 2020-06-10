@@ -4,7 +4,7 @@ defmodule XbyStatus.Blockchain.Xby do
     icon: "https://logos-download.com/wp-content/uploads/2019/11/XtraBYtes_XBY_Logo_blue-700x608.png",
     goal: 2_000_000,
     balance: nil,
-    name: "Xtrabytes",
+    name: "XTRABYTES",
     tx_lookup_url: "https://xtrabytes.global/explorer",
     api_key: nil,
     symbol: "XBY"

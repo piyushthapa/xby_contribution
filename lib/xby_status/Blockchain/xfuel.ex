@@ -4,7 +4,7 @@ defmodule XbyStatus.Blockchain.Xfuel do
     icon: "https://xtrabytes.global/build/images/xfuel/logo.png",
     goal: 2_000_000,
     balance: nil,
-    name: "Xfuel",
+    name: "XFUEL",
     tx_lookup_url: "https://xtrabytes.global/explorer/xfuel",
     symbol: "XFUEL"
   ]

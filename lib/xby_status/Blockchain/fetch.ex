@@ -6,6 +6,7 @@ defmodule XbyStatus.Blockchain.Fetch do
 
 
   @coins [Btc, Eth, Xby, Xfuel]
+  @timeout 5 * 60 * 1000 # 5 minutes
 
   def fetch_coin_contributions() do
     @coins
@@ -21,6 +22,6 @@ defmodule XbyStatus.Blockchain.Fetch do
   end
 
   defp fetch_await(task) do
-    Task.await(task, 10_000)
+    Task.await(task, @timeout)
   end
 end
