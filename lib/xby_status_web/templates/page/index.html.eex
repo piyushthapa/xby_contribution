@@ -1,0 +1,34 @@
+<div class="columns is-desktop">
+  <%= for coin <- @contributions.coins do %>
+  <div class="column">
+    <div class="card">
+      <div class="card-content">
+        <div class="media">
+          <div class="media-left">
+            <figure class="image is-48x48">
+              <img src="<%= coin.icon %>" class="logo-img" alt="<%= coin.name %>">
+            </figure>
+          </div>
+          <div class="media-content">
+            <p class="title is-4"><%= coin.name %></p>
+            <p class="subtitle is-6"><%= get_balance(coin) %></p>
+          </div>
+        </div>
+    
+        <div class="content">
+          <div style="height: 2rem;">
+            <%= if get_percentage(coin) do %>
+              <progress class="progress" value="<%= get_percentage(coin) %>" max="100"> <%= get_percentage(coin) %></progress>  
+            <% end %>  
+          </div> 
+          
+          <%= if get_explorer_url(coin) do %>
+            <a class="button is-info is-light" target="_blank" href="<%= get_explorer_url(coin) %>">View Detail</a>
+          <% end %>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>
