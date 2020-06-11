@@ -5,7 +5,7 @@ defmodule XbyStatus.Blockchain.Xfuel do
     goal: 2_000_000,
     balance: nil,
     name: "XFUEL",
-    tx_lookup_url: "https://xtrabytes.global/explorer/xfuel",
+    tx_lookup_url: "https://xtrabytes.global/explorer/xfuel?open=%2Faddress%2Fxfuel%2F{address}",
     symbol: "XFUEL"
   ]
 

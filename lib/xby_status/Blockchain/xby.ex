@@ -5,7 +5,7 @@ defmodule XbyStatus.Blockchain.Xby do
     goal: 2_000_000,
     balance: nil,
     name: "XTRABYTES",
-    tx_lookup_url: "https://xtrabytes.global/explorer",
+    tx_lookup_url: "https://xtrabytes.global/explorer/xby?open=%2Faddress%2Fxby%2F{address}",
     api_key: nil,
     symbol: "XBY"
   ]

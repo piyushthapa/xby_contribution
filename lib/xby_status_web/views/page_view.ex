@@ -36,4 +36,28 @@ defmodule XbyStatusWeb.PageView do
         |> String.replace("{address}", coin.address)
     end
   end
+
+  def get_progress_class(coin) do
+    case get_percentage(coin) do
+      nil -> ""
+      value when value >= 100.0 ->
+        "is-success"
+
+      value when value <= 25.0 ->
+        "is-danger"
+
+      value when value >25 and value <=50 ->
+        "is-warning"
+
+      value when value >50 and value <=75  ->
+        "is-link"
+
+      value when value >75 and value <100 ->
+        "is-primary"
+
+      _ ->
+        ""
+
+    end
+  end
 end

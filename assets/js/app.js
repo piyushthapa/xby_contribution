@@ -15,4 +15,8 @@ import "../css/app.scss"
 import "phoenix_html"
 
 import * as timeago from 'timeago.js';
-timeago.render(document.querySelectorAll('.timeago-placeholder'));
+
+document.querySelectorAll(".timeago-placeholder").forEach(el => {
+  const formatedTime = timeago.format(el.getAttribute("data-time"));
+  el.innerHTML = formatedTime;
+})

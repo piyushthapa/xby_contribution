@@ -1,4 +1,11 @@
-<h6 class="subtitle is-6">Updated: <span class="timeago-placeholder" datetime="<%= @contributions.updated_at  %>"> </span></h6>
+<div class="container">
+  <div class="columns is-centered" style="padding-bottom: 1rem;">
+    <div class="column is-half" style="text-align: center">
+      <h6 class = "title is-3"><span class="has-text-link">Node</span><span class="" style="font-weight: normal">Inspect</span> </h6>
+      <h6 class="subtitle is-6" style="padding-top: 0rem;">Updated: <span class="timeago-placeholder" data-time="<%= @contributions.updated_at  %>"> </span></h6>
+    </div>
+  </div>
+</div>
 <div class="columns is-desktop">
   <%= for coin <- @contributions.coins do %>
   <div class="column">
@@ -19,7 +26,7 @@
         <div class="content">
           <div style="height: 2rem;">
             <%= if get_percentage(coin) do %>
-              <progress class="progress" value="<%= get_percentage(coin) %>" max="100"> <%= get_percentage(coin) %></progress>  
+              <progress class="progress <%= get_progress_class(coin) %>" value="<%= get_percentage(coin) %>" max="100"> <%= get_percentage(coin) %></progress>  
             <% end %>  
           </div> 
           
