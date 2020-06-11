@@ -4,10 +4,26 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Xtrabytes Contribution</title>
-    
+    <title>NodeInspect * EXCHANGE CONTRIBUTION</title>
+    <meta name="Keywords" content="Blockchain, cryptocurrency, Masternodes, monitoring, Ethereum, Bitcoin, Static Node" />
+    <meta name="Description" content="Monitor Coin Contribution" />
+    <meta name="Robots" content="Monitor Contribution" />
+
     <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>"/>
+    
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-169193520-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-169193520-1');
+    </script>
+
     <script defer type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
+
+
   </head>
   <body>
     <main role="main" class="container is-fluid">
