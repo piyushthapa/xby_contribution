@@ -9,7 +9,8 @@ defmodule XbyStatus.Blockchain.Eth do
     name: "Ethereum",
     tx_lookup_url: "https://etherscan.io/address/{address}",
     api_key: nil,
-    symbol: "ETH"
+    symbol: "ETH",
+    price: nil
   ]
 
   def new() do
@@ -37,5 +38,20 @@ defimpl XbyStatus.Blockchain, for: XbyStatus.Blockchain.Eth  do
     end
 
     Map.put(eth, :balance, balance)
+  end
+
+  def fetch_price(%Eth{} = eth) do
+    url = "https://api.coingecko.com/api/v3/coins/ethereum"
+    price =
+      case HTTPoison.get(url) do
+        {:ok, %HTTPoison.Response{status_code: 200, body: body}} ->
+          Jason.decode!(body)
+          |> get_in(["market_data", "current_price", "usd"])
+
+        _ ->
+          nil
+      end
+
+    Map.put(eth, :price, price)
   end
 end

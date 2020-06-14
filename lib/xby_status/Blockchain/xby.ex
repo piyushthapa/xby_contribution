@@ -7,7 +7,8 @@ defmodule XbyStatus.Blockchain.Xby do
     name: "XTRABYTES",
     tx_lookup_url: "https://xtrabytes.global/explorer/xby?open=%2Faddress%2Fxby%2F{address}",
     api_key: nil,
-    symbol: "XBY"
+    symbol: "XBY",
+    price: nil
   ]
 
   def new() do
@@ -44,6 +45,20 @@ defimpl XbyStatus.Blockchain, for: XbyStatus.Blockchain.Xby  do
   end
 
   defp extract_balance(_), do: nil
+
+  def fetch_price(%Xby{} = xby) do
+    url = "https://coincodex.com/api/coincodex/get_coin/xby"
+
+    price =
+      case HTTPoison.get(url) do
+        {:ok, %HTTPoison.Response{status_code: 200, body: body}} ->
+          Jason.decode!(body)
+          |> Map.get("last_price_usd")
+
+      end
+
+    Map.put(xby, :price, price)
+  end
 end
 
 defmodule XbyStatus.Blockchain.Xby.Parser do
@@ -52,5 +67,6 @@ defmodule XbyStatus.Blockchain.Xby.Parser do
   parser :parse do
     text name: :balance, css: ".info-modal-stripe-xby .amountinteger:first-child, .info-modal-stripe-xfuel .amountinteger:first-child "
   end
+
 end
 

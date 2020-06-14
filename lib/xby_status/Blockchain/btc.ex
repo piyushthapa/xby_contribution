@@ -7,7 +7,8 @@ defmodule XbyStatus.Blockchain.Btc do
     balance: nil,
     name: "Bitcoin",
     tx_lookup_url: "https://www.blockchain.com/btc/address/{address}",
-    symbol: "BTC"
+    symbol: "BTC",
+    price: nil
   ]
 
   def new() do
@@ -30,6 +31,22 @@ defimpl XbyStatus.Blockchain, for: XbyStatus.Blockchain.Btc  do
       end
 
     Map.put(btc, :balance, balance)
+  end
+
+  def fetch_price(%Btc{} = btc) do
+    url = "https://blockchain.info/ticker"
+
+    price =
+      case HTTPoison.get(url) do
+        {:ok, %HTTPoison.Response{status_code: 200, body: body}} ->
+          Jason.decode!(body)
+          |> Map.get("USD")
+          |> Map.get("last")
+
+        _ -> nil
+      end
+
+    Map.put(btc, :price, price)
   end
 
 end

@@ -6,7 +6,8 @@ defmodule XbyStatus.Blockchain.Xfuel do
     balance: nil,
     name: "XFUEL",
     tx_lookup_url: "https://xtrabytes.global/explorer/xfuel?open=%2Faddress%2Fxfuel%2F{address}",
-    symbol: "XFUEL"
+    symbol: "XFUEL",
+    price: nil
   ]
 
   def new() do
@@ -33,7 +34,6 @@ defimpl XbyStatus.Blockchain, for: XbyStatus.Blockchain.Xfuel  do
       end
 
     Map.put(xby, :balance, balance)
-
   end
 
   defp extract_balance(%{balance: balance}) when is_binary(balance) do
@@ -44,4 +44,18 @@ defimpl XbyStatus.Blockchain, for: XbyStatus.Blockchain.Xfuel  do
   end
 
   defp extract_balance(_), do: nil
+
+  def fetch_price(%Xfuel{} = xfuel) do
+    url = "https://coincodex.com/api/coincodex/get_coin/xfuel"
+
+    price =
+      case HTTPoison.get(url) do
+        {:ok, %HTTPoison.Response{status_code: 200, body: body}} ->
+          Jason.decode!(body)
+          |> Map.get("last_price_usd")
+
+      end
+
+    Map.put(xfuel, :price, price)
+  end
 end

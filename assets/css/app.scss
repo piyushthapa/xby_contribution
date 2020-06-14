@@ -1,7 +1,11 @@
 /* This file is for your main application css. */
 @import "../node_modules/bulma/bulma.sass";
 
+body {
 
+  background-color: #f6f8fa;
+  min-height: 100vh;
+}
 /* Alerts and form errors */
 .alert {
   padding: 15px;
@@ -31,8 +35,13 @@
   display: none;
 }
 
-.logo-img {
 
-  height: 48px;
-  width: 48px;
+.logo-header {
+  padding: 1rem 0;
+  border-bottom: 0.5px inset #ccc;
+}
+
+.price-ticker{
+  font-size: 14px;
+  font-weight: 500 !important;
 }

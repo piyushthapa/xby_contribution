@@ -60,4 +60,26 @@ defmodule XbyStatusWeb.PageView do
 
     end
   end
+
+  def get_total_usd(coins) do
+    tot_usd =
+      Enum.reduce(coins, 0, fn coin_info, acc ->
+        case Map.get(coin_info, :price) do
+          nil -> acc
+
+          price ->  acc + (coin_info.balance * price)
+        end
+      end)
+
+    Number.Currency.number_to_currency(tot_usd)
+  end
+
+  def get_price(coin) do
+    case Map.get(coin, :price)  do
+      nil -> "NA"
+      price ->
+          coin.balance * price
+          |> Number.Currency.number_to_currency()
+    end
+  end
 end

@@ -18,6 +18,7 @@ defmodule XbyStatus.Blockchain.Fetch do
     Task.async(fn ->
       coin.new()
       |> XbyStatus.Blockchain.fetch_balance()
+      |> XbyStatus.Blockchain.fetch_price()
     end)
   end
 

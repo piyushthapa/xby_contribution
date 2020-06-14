@@ -42,7 +42,8 @@ defmodule XbyStatus.MixProject do
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
       {:httpoison, "~> 1.7"},
-      {:excrawl, git: "https://github.com/2trde/excrawl"}
+      {:excrawl, git: "https://github.com/2trde/excrawl"},
+      {:number, "~> 1.0"}
     ]
   end
 

@@ -1,8 +1,14 @@
 <div class="container">
   <div class="columns is-centered" style="padding-bottom: 1rem;">
     <div class="column is-half" style="text-align: center">
-      <h6 class = "title is-3"><span class="has-text-link">Node</span><span class="" style="font-weight: normal">Inspect</span> </h6>
-      <h6 class="subtitle is-6" style="padding-top: 0rem;">Updated: <span class="timeago-placeholder" data-time="<%= @contributions.updated_at  %>"> </span></h6>
+      <div class="logo-header">
+        <h6 class = "title is-3"><span class="has-text-link">Node</span><span class="" style="font-weight: normal">Inspect</span> </h6>  
+      </div>
+      
+      <h6 class = "subtitle is-6" style="padding-top: 1rem;"> <span class="" >Total Raised</h6>
+      <h6 class="title is-3"><span><%= get_total_usd(@contributions.coins) %></span></h6>
+        
+      <h6 class="subtitle is-6" style="padding-top: 0.5rem;">Updated: <span class="timeago-placeholder" data-time="<%= @contributions.updated_at  %>"> </span></h6>
     </div>
   </div>
 </div>
@@ -18,7 +24,12 @@
             </figure>
           </div>
           <div class="media-content">
-            <p class="title is-4"><%= coin.name %></p>
+            <p class="title is-4"><%= coin.name %>
+              <span class="tag is-info is-light price-ticker">
+                <%= get_price(coin) %>
+              </span>
+            </p>
+            
             <p class="subtitle is-6"><%= get_balance(coin) %></p>
           </div>
         </div>
